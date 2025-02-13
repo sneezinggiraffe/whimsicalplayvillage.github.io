@@ -1,1 +1,314 @@
-.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whimsical Play Village</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2A6F97;
+            --secondary: #468FAF;
+            --accent: #F4A261;
+            --light: #F8F9FA;
+            --dark: #1D3557;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .social-links {
+            position: absolute;
+            top: 0.2rem;
+            right: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 17px;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            color: rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a[aria-label="Facebook"]:hover {
+            color: #4267B2; /* Facebook blue */
+        }
+
+        .social-links a[aria-label="Instagram"]:hover {
+            color: #E1306C; /* Instagram pink */
+        }
+
+        .book-now-btn {
+            background: #84c0a0;
+            color: #fafafa;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 1.2rem !important;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .book-now-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 111, 151, 0.3);
+            text-decoration: none;
+        }
+
+        .book-now-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(42, 111, 151, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin-top: 18px;
+            position: relative;
+            align-items: flex-start;
+            padding-left: 1rem;
+        }
+
+        #logo {
+            width: 20vw;
+            max-width: 125px;
+            max-height: 125px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        #logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .logo-text {
+            font-family: 'Indie Flower', cursive;
+            color: var(--light);
+            font-size: 2.0rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (min-width: 470px) {
+            .header-content {
+                flex-direction: row;
+                align-items: center;
+                padding-left: 0px;
+                gap: 1.5rem;
+            }
+            .logo-text {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (min-width: 720px) {
+            .logo-text {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (min-width: 920px) {
+            .logo-text {
+                font-size: 5rem;
+            }
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 3rem auto;
+            padding: 3rem;
+            max-width: 800px;
+            line-height: 1.7;
+            text-align: justify;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .welcome-section h2,
+        .welcome-section h3 {
+            font-family: 'Indie Flower', cursive;
+            font-weight: 700;
+        }
+
+        .welcome-section h2 {
+            color: var(--primary);
+            font-size: 2.8rem;
+            margin-top: 0rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .welcome-section h3 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 0rem;
+        }
+
+        .welcome-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .welcome-section p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-top: 0rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            width: 100%;
+        }
+
+        .welcome-section a {
+            color: #356ca9;
+            text-decoration: none;
+        }
+
+        .welcome-section a:hover {
+            text-decoration: underline;
+        }
+
+        .welcome-section a.book-now-btn {
+            color: #fafafa;
+            display: inline-block;
+            margin: 0 auto;
+            width: fit-content;
+            text-decoration: none;
+        }
+
+        #arrow {
+            font-size: 30px;
+            text-align: center;
+            position: relative;
+            top: -10px;
+            animation: curlyBounce 1.5s infinite ease-in-out;
+            left: 13%;
+        }
+
+        @keyframes curlyBounce {
+            0%, 100% { transform: rotate(0deg) translateY(0px); }
+            50% { transform: rotate(8deg) translateY(6px); }
+        }
+
+        .welcome-section .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        iframe#booking {
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img id="logo" src="logo.png" alt="Whimsical Play Village Logo">
+            <span class="logo-text">Whimsical Play Village</span>
+        </div>
+        <div class="social-links">
+                <a href="https://www.facebook.com/whimsicalplayvillage/" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/whimsicalplayvillage/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            <a href="#booking" class="book-now-btn">Book Now</a>
+        </div>
+    </header>
+
+    <div class="welcome-section">
+        <h2>About Us</h2>
+        <p>Whimsical Play Village is an indoor role play session set up to nurture your child's imagination, creativity and love of learning through play. The Sessions cater to children of 0-6 years of age, and our bespoke area is created exclusively with your little ones in mind.</p>
+        
+        <p>Sara is a Primary Trained School Teacher. Our sessions run from <b>Pen-Y-Fai Scouts Hall</b> on <b>Tuesdays</b> and <b>Wednesdays</b>, and we also offer sessions within schools linking in with themes and the curriculum.</p>
+        
+        <p>Follow us on <a href="https://www.facebook.com/whimsicalplayvillage" target="_blank">Facebook</a> to keep up to date with any special events and photos. We look forward to giving you a very warm welcome to Whimsical Play Village!</p>
+
+        <h3>Our Sessions</h3>
+        <p>Each of our sessions are designed exclusively for under 6s! They are bookable in advance on a pay-as-you-go basis. Simply select your preferred date and time, book your tickets and turn up!</p>
+        <p>We operate mainly in the week during the school term, but offer pop up sessions on the weekends from time to time. We also advertise pop ups during the half terms, and these sessions are open to children up to the age of 7.</p>
+        <p>Each session runs for 1 ½ hours and all play is unstructured and child led. We actively encourage parent/carers participation. These moments with our little ones are precious, and joining in with their imaginary roles helps your little ones to grow in confidence and esteem. We love to see everyone enjoying themselves!</p>
+        
+        <h3>Safe & Secure Environment</h3>
+        <p>Our play sessions provide a safe environment for you and your little ones. Each session is limited to a set number of spaces, to allow each family group plenty of space to play. We always allow time between sessions to clean and ensure everything is ready for our next group. You'll see us cleaning and tidying during the session too, carefully cleaning items before placing them back into the play zones.</p>
+
+        <a href="#booking" class="book-now-btn">Come and Join Us!</a>
+        <svg id="arrow" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0 C30 10, 20 30, 5 35" stroke="black" stroke-width="3" fill="transparent"/>
+            <polygon points="03,30 10,38 0,38" fill="black"/>
+        </svg>
+    </div>
+
+    <div style="padding: 0 2rem">
+        <iframe id="booking" 
+                src="https://bookwhen.com/whimsicalplayvillage/iframe" 
+                style="display:block; border:none; width:100%; height:900px; margin: 0 auto;">
+        </iframe>
+    </div>
+
+    <script>
+    (function () {
+        function resizeIframeFromMessage(event) {
+          if (event.origin !== 'https://bookwhen.com' || typeof event.data.height !== 'number') return;
+          var iframes = [];
+          if (document.querySelectorAll) {
+            iframes = document.querySelectorAll('iframe[src^="https://bookwhen.com"]');
+          } else {
+            iframes = document.getElementsByTagName('iframe');
+          }
+          var iframesCount = iframes.length;
+          var eventFrame = null;
+          for (var i = 0; i < iframesCount; i++) {
+            if (iframes[i].contentWindow === event.source) {
+              eventFrame = iframes[i];
+              break;
+            }
+          }
+          if (eventFrame) {
+            eventFrame.style.height = event.data.height + 'px';
+          }
+        }
+        if (window.addEventListener) {
+          window.addEventListener('message', resizeIframeFromMessage);
+        } else if (window.attachEvent) {
+          window.attachEvent('onmessage', resizeIframeFromMessage);
+        }
+      }());
+     </script>
+</body>
+</html>
